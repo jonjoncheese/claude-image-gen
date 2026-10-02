@@ -13,6 +13,7 @@
   <a href="https://github.com/jonjoncheese/claude-image-gen/stargazers"><img src="https://img.shields.io/github/stars/jonjoncheese/claude-image-gen?style=flat&color=yellow" alt="Stars"></a>
   <a href="#install"><img src="https://img.shields.io/badge/macOS%20%C2%B7%20Windows%20%C2%B7%20Linux-supported-blue?style=flat" alt="macOS, Windows, Linux"></a>
   <a href="#claude-code"><img src="https://img.shields.io/badge/Claude_Code-plugin-orange?style=flat" alt="Claude Code plugin"></a>
+  <a href="https://github.com/jonjoncheese/claude-image-gen/actions/workflows/test.yml"><img src="https://github.com/jonjoncheese/claude-image-gen/actions/workflows/test.yml/badge.svg" alt="Tests"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-green?style=flat" alt="MIT"></a>
 </p>
 
@@ -250,7 +251,7 @@ Flow's page changes often. When it does, the tool stops with a clear message ins
 
 ## Contributing
 
-Issues and pull requests are welcome. Flow's website changes without notice, so the most useful bug report is the command you ran, the error, and the `claude-image-gen-debug.png` that `CIG_DEBUG=1` saves. The whole tool is [one file](claude-image-gen.js) with no dependencies; `node --check claude-image-gen.js` is the build.
+Issues and pull requests are welcome. Flow's website changes without notice, so the most useful bug report is the command you ran, the error, and the `claude-image-gen-debug.png` that `CIG_DEBUG=1` saves. The whole tool is [one file](claude-image-gen.js) with no dependencies; `node --check claude-image-gen.js` is the build and `node --test` runs the tests.
 
 ## Disclaimer
 

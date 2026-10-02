@@ -8,7 +8,7 @@ const os = require('os');
 const path = require('path');
 const { spawn } = require('child_process');
 
-const VERSION = '0.2.0';
+const VERSION = '0.2.1';
 const NAME = 'claude-image-gen';
 const FLOW = 'https://flow.google.com';
 const HOME = process.env.CIG_HOME || path.join(os.homedir(), '.claude-image-gen');
@@ -706,19 +706,26 @@ async function login(a) {
     await closeBrowser(b);
     b = null;
     if (!email) throw new CliError('Signed in, but could not read which Google account it is. Run login again.');
-    const key = email.toLowerCase(), dest = path.join(ACCOUNTS_DIR, key);
-    const replaced = fs.existsSync(dest);
-    try { fs.copyFileSync(path.join(dest, 'project.txt'), path.join(tmp, 'project.txt')); } catch {}
-    for (let i = 0; ; i++) { // the browser can hold its files for a moment after it exits
-      try { fs.rmSync(dest, { recursive: true, force: true }); fs.renameSync(tmp, dest); break; } catch (e) { if (i > 40) throw e; await sleep(250); }
-    }
-    const cfg = readConfig();
-    if (!accounts().list.includes(cfg.active)) { cfg.active = key; writeConfig(cfg); }
+    const { key, replaced } = await fileAccount(tmp, email);
     console.log(`${replaced ? 'Signed in again' : 'Signed in'} as ${key}.\n\n${accountsText()}`);
   } finally {
     if (b) await closeBrowser(b);
     fs.rmSync(tmp, { recursive: true, force: true });
   }
+}
+
+// Move a freshly signed-in profile folder to accounts/<email>, replacing an old sign-in of the same account.
+// The first account becomes the active one.
+async function fileAccount(tmp, email) {
+  const key = email.toLowerCase(), dest = path.join(ACCOUNTS_DIR, key);
+  const replaced = fs.existsSync(dest);
+  try { fs.copyFileSync(path.join(dest, 'project.txt'), path.join(tmp, 'project.txt')); } catch {}
+  for (let i = 0; ; i++) { // the browser can hold its files for a moment after it exits
+    try { fs.rmSync(dest, { recursive: true, force: true }); fs.renameSync(tmp, dest); break; } catch (e) { if (i > 40) throw e; await sleep(250); }
+  }
+  const cfg = readConfig();
+  if (!accounts().list.includes(cfg.active)) { cfg.active = key; writeConfig(cfg); }
+  return { key, replaced };
 }
 
 async function main() {
@@ -824,4 +831,4 @@ if (require.main === module) {
   for (const sig of ['SIGINT', 'SIGTERM']) process.on(sig, async () => { if (cleanup) await cleanup(); unlock(); process.exit(130); });
   main().catch(e => { console.error(`error: ${e.message}`); process.exit(e.code || EXIT.error); });
 }
-module.exports = { Page, downloadOriginal, JS, launch, closeBrowser, openProject, select };
+module.exports = { Page, downloadOriginal, JS, launch, closeBrowser, openProject, select, fileAccount, accounts };
