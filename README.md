@@ -18,6 +18,10 @@
 </p>
 
 <p align="center">
+  <img src="docs/demo.gif" width="760" alt="claude-image-gen making an image and a video from the terminal">
+</p>
+
+<p align="center">
   <a href="#see-it">See it</a> ·
   <a href="#install">Install</a> ·
   <a href="#use-it">Use it</a> ·
