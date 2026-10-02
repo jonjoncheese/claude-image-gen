@@ -5,8 +5,8 @@
 class ClaudeImageGen < Formula
   desc "Generate images and videos with Google Flow from the command-line"
   homepage "https://github.com/jonjoncheese/claude-image-gen"
-  url "https://raw.githubusercontent.com/jonjoncheese/claude-image-gen/v0.2.1/claude-image-gen.js"
-  sha256 "d292407e909427278aa9137e528777603db3762943a9cac8e4da93016258c8af"
+  url "https://raw.githubusercontent.com/jonjoncheese/claude-image-gen/v0.2.2/claude-image-gen.js"
+  sha256 "f6970ddc92d1bbfd6620c44f7d108f123138cb2178efcdc3fb49464e1f9db3d6"
   license "MIT"
 
   depends_on "node"

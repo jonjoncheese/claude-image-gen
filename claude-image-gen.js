@@ -8,7 +8,7 @@ const os = require('os');
 const path = require('path');
 const { spawn } = require('child_process');
 
-const VERSION = '0.2.1';
+const VERSION = '0.2.2';
 const NAME = 'claude-image-gen';
 const FLOW = 'https://flow.google.com';
 const HOME = process.env.CIG_HOME || path.join(os.homedir(), '.claude-image-gen');
@@ -675,7 +675,8 @@ function accountsText() {
 // account that is already there replaces it, which is how a signed-out account is fixed.
 async function login(a) {
   const tmp = path.join(ACCOUNTS_DIR, `.signing-in-${process.pid}`);
-  fs.rmSync(tmp, { recursive: true, force: true });
+  // Clear sign-ins a killed run left behind (we hold the lock, so none of them is still in progress).
+  try { for (const n of fs.readdirSync(ACCOUNTS_DIR)) if (n.startsWith('.signing-in-')) fs.rmSync(path.join(ACCOUNTS_DIR, n), { recursive: true, force: true }); } catch {}
   select(tmp);
   let b = null;
   try {

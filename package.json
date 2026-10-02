@@ -1,6 +1,6 @@
 {
   "name": "claude-image-gen",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Generate images and videos with Google Flow (Nano Banana, Veo) from the command line or Claude Code. Headless, one file, no dependencies.",
   "bin": { "claude-image-gen": "claude-image-gen.js" },
   "engines": { "node": ">=22" },
