@@ -1,0 +1,14 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "flow-image-gen",
+  "description": "Free AI images and videos in Claude Code, through your own Google Flow account.",
+  "owner": { "name": "jonjoncheese", "url": "https://github.com/jonjoncheese" },
+  "plugins": [
+    {
+      "name": "flow-image-gen",
+      "description": "Generate images (Nano Banana) and videos (Veo, Omni Flash) with Google Flow, headless.",
+      "source": "./",
+      "category": "productivity"
+    }
+  ]
+}

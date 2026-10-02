@@ -1,0 +1,11 @@
+{
+  "name": "flow-image-gen",
+  "version": "0.2.0",
+  "description": "Generate images (Nano Banana) and videos (Veo, Omni Flash) with Google Flow, headless.",
+  "author": { "name": "jonjoncheese", "url": "https://github.com/jonjoncheese" },
+  "homepage": "https://github.com/jonjoncheese/claude-image-gen",
+  "repository": "https://github.com/jonjoncheese/claude-image-gen",
+  "license": "MIT",
+  "keywords": ["image-generation", "video-generation", "google-flow", "nano-banana", "veo"],
+  "skills": "./skills/"
+}
