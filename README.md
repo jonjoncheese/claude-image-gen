@@ -56,7 +56,7 @@ Each one came straight out of the command under it, unedited (the GIF is cut dow
 
 ```bash
 # macOS (Homebrew; installs Node.js for you)
-brew tap jonjoncheese/claude-image-gen https://github.com/jonjoncheese/claude-image-gen && brew install claude-image-gen
+brew tap jonjoncheese/claude-image-gen https://github.com/jonjoncheese/claude-image-gen && brew trust jonjoncheese/claude-image-gen && brew install claude-image-gen
 
 # macOS / Linux
 curl -fsSL https://raw.githubusercontent.com/jonjoncheese/claude-image-gen/main/install.sh | sh
